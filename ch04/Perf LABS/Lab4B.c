@@ -1,5 +1,5 @@
-/* Input a single char and then print the next char in the sequence
-*  Use getchar() and putchar()
+/* Input a single char and then print the previous char in the sequence
+*  Use getc() and putc()
 *
 *  name: Whelpley
 *  date: 01 Feb 2019
