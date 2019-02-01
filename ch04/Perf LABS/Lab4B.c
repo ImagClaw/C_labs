@@ -3,7 +3,7 @@
 *
 *  name: Whelpley
 *  date: 01 Feb 2019
-*  project: Demo 4A
+*  project: Demo 4B
 *
 */
 
@@ -12,9 +12,9 @@
 int main(void) {
     int myInput = 0;
     printf("Enter a single char: ");
-    myInput = getchar();
-    printf("The next character in the sequence is: ");
-    putchar(myInput + 1);
+    myInput = getc(stdin);
+    printf("The previous character in the sequence is: ");
+    putc(myInput - 1, stdout);
 
     // Calling getchar() which is assigned to myInput
     getchar();
