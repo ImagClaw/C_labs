@@ -20,11 +20,16 @@ int main(void) {
     char firstName[64] = {0};
     char middleName[64] = {0};
     char lastName[64] = {0};
+    int firstNum = 0;
+    int secondNum = 0;
     printf("Enter your full name (First<tab>Middle<tab>Last): \n");
     scanf("%32s\t%32s\t%32s", &firstName, &middleName, &lastName);
 
     printf("Your name is: \n %s\t\n%s\t\n%s\t\n", firstName, middleName, lastName);
 
+    printf("Enter two integers, separated by a *, to be multiplied...: \n");
+    scanf("%d*%d", &firstNum, &secondNum);
+    printf("The result of %d multiplied by %d is %d", firstNum, secondNum, firstNum*secondNum);
     return 0;
 
 }
