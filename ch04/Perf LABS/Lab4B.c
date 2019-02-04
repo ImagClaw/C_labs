@@ -16,7 +16,5 @@ int main(void) {
     printf("The previous character in the sequence is: ");
     putc(myInput - 1, stdout);
 
-    // Calling getchar() which is assigned to myInput
-    getchar();
     return 0;
 }
