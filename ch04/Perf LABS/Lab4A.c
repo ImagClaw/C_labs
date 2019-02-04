@@ -15,8 +15,6 @@ int main(void) {
     myInput = getchar();
     printf("The next character in the sequence is: ");
     putchar(myInput + 1);
-
-    // Calling getchar() which is assigned to myInput
-    getchar();
+    
     return 0;
 }
