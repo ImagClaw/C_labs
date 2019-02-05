@@ -1,5 +1,2 @@
-# Class Labs About C programming
-
+# Class Labs About C programming  :rage4:
 -------------------------------------------
-
-:h:/:m:/:s:
