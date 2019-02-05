@@ -32,7 +32,7 @@ int main(void) {
     if(scanf("%d %d", &A, &B) != 2) /*insert logical combo of relational expressions here */
         printf("Nah fam, Enter valid numbers...");
     else
-        printf("The hypontenuse of Side A (%d) and Side B (%d) is %fl", A, B, sqrt((A*A)+(B*B))); /* insert arithmetic hypotenuse calculation and hypotenuse here*/
+        printf("The hypontenuse of Side A (%d) and Side B (%d) is %3.3f", A, B, sqrt((A*A)+(B*B))); /* insert arithmetic hypotenuse calculation and hypotenuse here*/
 
     return 0;
 }
