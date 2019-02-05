@@ -1,6 +1,4 @@
-/* Input a single char and then print the next char in the sequence
-*  Use getchar() and putchar()
-*
+/*
 *  name: Whelpley
 *  date: 01 Feb 2019
 *  project: Perf 4A
