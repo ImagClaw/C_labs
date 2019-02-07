@@ -15,7 +15,6 @@
 *
 */
 
-#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include <inttypes.h>
 
@@ -28,7 +27,7 @@ int main(void) {
     printf("Enter a number to convert to binary: ");
     fscanf(stdin, "%u", &userInput);
 
-    bitChecker = bitChecker << 31;
+    bitChecker = bitChecker << 20;
 
     while(bitChecker > 0) {
         if ((bitChecker & userInput) == 0) {
