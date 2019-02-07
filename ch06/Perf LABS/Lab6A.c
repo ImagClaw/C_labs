@@ -20,9 +20,7 @@
 
 int main(void) {
     uint32_t userInput = 0;
-    uint32_t bitChecker = 1;
-
-
+    uint32_t bitChecker = 0x01;
 
     printf("Enter a number to convert to binary: ");
     fscanf(stdin, "%u", &userInput);
