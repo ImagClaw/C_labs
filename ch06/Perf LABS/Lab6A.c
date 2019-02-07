@@ -21,21 +21,23 @@
 
 int main(void) {
     uint32_t userInput = 0;
-    uint32_t transNumber = 0;
-    uint32_t bitChecker = 0x01;
-
-    printf("Enter a number to be shifted: ");
-    scanf("%u", &userInput);
-    
-    printf("Your new number is %u (Hex: 0x%08X) \n", userInput, userInput);
-
-    transNumber = userInput;
-    userInput = userInput >> 4;
-    transNumber = transNumber << ((sizeof(transNumber)*8)-4);
-
-    userInput = userInput | transNumber;
+    uint32_t bitChecker = 1;
 
 
-    printf("Your new number is %u (Hex: 0x%08X) \n", userInput, userInput);
+
+    printf("Enter a number to convert to binary: ");
+    fscanf(stdin, "%u", &userInput);
+
+    bitChecker = bitChecker << 31;
+
+    while(bitChecker > 0) {
+        if ((bitChecker & userInput) == 0) {
+            printf("0");
+        }else
+        {
+            printf("1");
+        }
+        bitChecker = bitChecker >> 1;
+    }
 
 }
