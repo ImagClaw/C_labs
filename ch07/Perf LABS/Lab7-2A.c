@@ -13,8 +13,6 @@ int main(void) {
     fprintf(stdout, "Enter a string: ");
     fscanf(stdin, "%s", &myArray);
 
-    //fprintf(stdout, "%d", myArray[0]);
-
     if (myArray[0] >= 32){
         fprintf(stdout, "%s", myArray);
     }
