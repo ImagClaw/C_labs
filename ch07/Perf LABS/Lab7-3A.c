@@ -1,7 +1,7 @@
 /*
 * name: Whelpley
 * date: 8 Feb 2019
-* project: Lab7.3A - FOR LOOP
+* project: Lab7-3A - FOR LOOP
 *
 * FOR LOOP: OCCUPANDI TEMPORIS
 * 
