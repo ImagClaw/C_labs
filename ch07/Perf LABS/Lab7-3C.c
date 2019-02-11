@@ -40,7 +40,5 @@ int main() {
     for (int c = 0; c < myCount; c++) {
         fprintf(stdout, "%c", myElement[c]);
     } 
-
-    printf("\n");
     return 0;
 }
