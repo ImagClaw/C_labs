@@ -22,7 +22,8 @@ int main() {
     char odd[] = "odd", even[] = "even";
     int startHere = 0;
 
-    fprintf(stdout, "Enter even or odd: \n");
+    fprintf(stdout, "This program will print 0 - 100\nbased on your selection of 'even' or 'odd'.\n");
+    fprintf(stdout, "Enter 'even' or 'odd': \n");
     fscanf(stdin, "%s", &userInput);
 
     if (strcmp(userInput, even) == 0)
@@ -30,24 +31,32 @@ int main() {
         startHere = 2;
         for (int i = 0; i <50; i++)
         {
-            fprintf(stdout, "%d \n", startHere);
-            startHere += 2;
+            if (startHere < 100) {
+                fprintf(stdout, "%d, ", startHere);
+                startHere += 2;
+            } else {
+                fprintf(stdout, "%d.", startHere);
+            }
         }
 
     } 
 
-    else if (strcmp(userInput, even) == 1) 
+    else if (strcmp(userInput, odd) == 0) 
     {
         startHere = 1;
         for (int i = 0; i <50; i++)
         {
-            fprintf(stdout, "%d \n", startHere);
-            startHere += 2;
+            if (startHere < 99) {
+                fprintf(stdout, "%d, ", startHere);
+                startHere += 2;
+            } else {
+                fprintf(stdout, "%d.", startHere);
+            }
         }
     } 
 
     else {
-        fprintf(stdout, "Read much?");
+        fprintf(stdout, "Read much? Next time enter 'even' or 'odd'.");
     }
     
     return 0;
