@@ -32,4 +32,6 @@ int main() {
     reverse_it(userString, 128);
 
     print_the_count(userString, 128);
+
+    main();  // cheap af way of looping
 }
