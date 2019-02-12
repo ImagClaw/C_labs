@@ -15,7 +15,7 @@
 */
 
 #include <stdio.h>
-#include <string.h>
+#include "replace.h"
 
 int replace_character(char * string, const char findThisChar, const char replaceItWithThis);
 
@@ -24,22 +24,10 @@ int main() {
     char find;
     char replace;
     fprintf(stdout, "Enter a string followed by what you want replaced and what to replace it with.\nI.E. hello o 0\n");
-    fscanf(stdin, "%s %c %c", &myStr, &find, &replace);
+    fscanf(stdin, "%s %c %c", myStr, &find, &replace);
     replace_character(myStr, find, replace);
     fprintf(stdout, myStr);
 
     return 0;
 
-}
-
-int replace_character(char * string, const char findThisChar, const char replaceItWithThis) {
-    int replaced = 0;
-    for (int i = 0; i < strlen(string);i++) {
-        if (string[i] == findThisChar) {
-            string[i] = replaceItWithThis;
-            replaced++;
-        }
-    }
-    fprintf(stdout, "%d replacements.\n", replaced);
-    return replaced;
 }
