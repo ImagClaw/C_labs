@@ -51,7 +51,7 @@ extern int reverse_it(char * forwardString, int strLen) {
         return ERR_INVALID_LENGTH;
     }
 
-    char reverse[1000];
+    char reverse[256];
     int begin, end, count = 0;
   
     while (forwardString[count] != '\0')
