@@ -41,7 +41,8 @@ extern int print_the_count(char * inputString, int strLen)
 }
 
 extern int reverse_it(char * forwardString, int strLen) {
-        
+
+    // Error handling 
     if (!forwardString)
     {
         return ERR_NULL_POINTER;
@@ -51,22 +52,29 @@ extern int reverse_it(char * forwardString, int strLen) {
         return ERR_INVALID_LENGTH;
     }
 
-    char reverse[256];
+    // initializing variables
+    char reverseString[256];
     int begin, end, count = 0;
   
+    /* while loop that takes in our forwardString (user passed from main)
+    * while forwardString does not contain a \0 iterate count +1
+    */
     while (forwardString[count] != '\0')
        count++;
   
     end = count - 1;
   
+    // for loop while begin is less than count, swap places with forwardString and reverseString
     for (begin = 0; begin < count; begin++) {
-       reverse[begin] = forwardString[end];
+       reverseString[begin] = forwardString[end];
        end--;
     }
   
-    reverse[begin] = '\0';
+    // zeroizes reverseString[begin]
+    reverseString[begin] = '\0';
   
-    printf("Your string reversed is: %s\n", reverse);
+    // prints the reverseString
+    printf("Your string reversed is: %s\n", reverseString);
      
     //strrev(forwardString);
     //fprintf(stdout, "Your string reversed is: %s\n", r);
