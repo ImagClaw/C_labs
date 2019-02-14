@@ -20,9 +20,11 @@
 */
 
 #include <stdio.h>
-#include "MyStringHeader.h"
+#include "MyStringHeader.h"s
 
 int main() {
+
+    // Initializes an empty array
     char userString[128] = {0};
 
     fprintf(stdout, "Enter a string you want to reverse: ");
