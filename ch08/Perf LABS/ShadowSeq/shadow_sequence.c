@@ -131,8 +131,21 @@ void clean_stdin(void)
 
 unsigned long shadow_sequence_number(int placeNumber)
 {
-	/* INSERT CODE HERE */
-
-	return 90; // Modify this return statement
+    if(placeNumber > 2300 || placeNumber <= 0)  //if placeNumber is not within valid range then return error number
+    {
+        return 105;
+    }
+    else if(placeNumber == 1)                   //if placeNumber is equal to 1 return given value 9
+    {
+        return 9;
+    }
+    else if(placeNumber == 2)                   //if placeNumber is equal to 2 return given value 0
+    {
+        return 0;
+    }
+    else                                        //else return the call of shadow_sequence_number(placeNumber - 1) + placeNumber ^ 2
+    {
+        return (shadow_sequence_number(placeNumber - 1) + (placeNumber * placeNumber));
+    }
 }
 
