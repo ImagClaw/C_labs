@@ -14,4 +14,5 @@
 * 
 */
 
+#undef EOF
 #define EOF 66
