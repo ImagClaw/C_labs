@@ -1,7 +1,7 @@
 /*
 *  name: Whelpley
 *  date: 25 Feb 2019
-*  project: Your_Song.c
+*  project: Lab12-your_song.c
 *  File I/O – fgets() “Your Song”
 *
 *  Save your favorite song into a text file.
