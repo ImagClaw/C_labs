@@ -53,83 +53,153 @@
 *          Required data for linked list completion
 */
 
-typedef struct members {
+struct members {
+    int member_index;
     char * member_initials;
     char * member_favMusician;
     char * member_dreamCar;
     struct members *next;
-} members;
+};
 
+void displayMember(struct members *membID, int id);
+void display(struct members *myMembers);
+//void remove(struct members *memb);
 
 int main() {
+
     
-    char choice;
+
+    int choice;
+    int index = 0;
+    int id;
     char initials[4];
     char favMusician[32];
     char dreamCar[32];
 
     struct members* members = NULL;
     struct members* currentMember = members;
+    struct members* newMember = members;
 
     // allocating all member nodes in the heap
-    members = (struct members*)malloc(sizeof(struct members));
-
-    members->member_initials = strdup(initials);
-    members->member_favMusician = strdup(favMusician);
-    members->member_dreamCar = strdup(dreamCar);
-    members->next = NULL;
-
-    // Linking all data to each other
+    //members = (struct members*)malloc(sizeof(struct members));
+    //currentMember = (struct currentmembers*)malloc(sizeof(struct members));
 
     do {
         printf(",-.-.          |                       ,-.-.\n");                
         printf("| | |,---.,-.-.|---.,---.,---.,---.    | | |,---.,---..   .\n");
         printf("| | ||---'| | ||   ||---'|    `---.    | | ||---'|   ||   |\n"); 
         printf("` ' '`---'` ' '`---'`---'`    `---'    ` ' '`---'`   '`---'\n");
-        printf("___________________________________________________________\n");   
+        printf("===========================================================\n");   
         printf("1. Add Member.\n");
-        printf("2. Print all data.\n");
+        printf("2. Print all Member's data.\n");
         printf("3. Print specific Member's data.\n");
-        printf("4. Print all Member's data\n");
-        printf("5. Exit\n\n");
+        printf("4. Print a section of Member's data\n");
+        printf("5. Remove a member (by ID).\n");
+        printf("6. Exit\n\n");
         printf("Enter your choice here: ");
         scanf("%d", &choice);
         switch (choice) {
             case 1:
-                if (members != NULL) {
-                    currentMember = currentMember->next;
-                }
-                currentMember = (struct members*)malloc(sizeof(struct members));
+                // declares a newMember as a new addition to the list
+                newMember = (struct members *)malloc(sizeof(struct members));
+                // increases index for each user added to the list
+                newMember->member_index = ++index;
+                // Add Member Menu header and prompts user to input 
                 printf("\n /\\  _| _|  |\\/| _  _ _ |_  _  _.\n");
                 printf("/~~\\(_|(_|  |  |(/_| | ||_)(/_| .\n");
                 printf("Answer a few questions, there are only 3.\n");
                 printf("1. Member's initials: ");
-                scanf("%3s", &initials);
-                //members->member_initials = initials;
+                scanf(" %[^\t\n]s", initials);
+                //fgets(initials, 3, stdin);
+                if (strlen(initials)!=3) {
+                    printf("\n\n\nERROR: 3 initials only. Try again.\n\n\n");
+                    break;
+                }
+                newMember->member_initials = (char *)malloc(sizeof(char)*4);
+                strcpy(newMember->member_initials, initials);
+                //newMember->next = favMusician;
                 printf("2. Member's favorite musician: ");
-                scanf("%31s", &favMusician);
-                //members->member_favMusician = strdup(favMusician);
+                scanf(" %[^\t\n]s", favMusician);
+                //fgets(favMusician, 31, stdin);
+                newMember->member_favMusician = (char *)malloc(sizeof(char)*32);
+                strcpy(newMember->member_favMusician, favMusician);
+                //newMember->next = dreamCar;
                 printf("3. Member's dream car: ");
-                scanf("%31s", &dreamCar);
-                //members->member_dreamCar = strdup(dreamCar);
-                //members->next = NULL;
-                printf("\nThanks! Info has been added to the Struct.\nReturning you to the Main Menu.\n\n");
+                scanf(" %[^\t\n]s", dreamCar);
+                //fgets(dreamCar, 31, stdin);
+                newMember->member_dreamCar = (char *)malloc(sizeof(char)*32);
+                strcpy(newMember->member_dreamCar, dreamCar);
+                newMember->next = NULL;
+                printf("\nThanks! Info has been added to the Database.\nReturning you to the Main Menu.\n\n");
+                if (members == NULL) {
+                    //members = newMember;
+                    members = newMember;
+                    currentMember = newMember;
+                } else {
+                    currentMember->next = newMember;
+                    currentMember = newMember;
+                }
+                //
                 break;
-            case 2:
-                printf("case 2\n\n");
+            case 2: // Print all members data //
+                if (members == NULL) {
+                    printf("\nNothing to see here...\n\n");
+                } else {
+                    display(members);
+                }
                 break;
-            case 3:
+            case 3: // Print specific members data //
                 printf("case 3\n\n");
                 break;
-            case 4:
-                printf("%s\r\n", *(members->member_favMusician));
+            case 4: // Print all of a single members data //
+                printf("Enter the ID of the Member's data: \n");
+                scanf(" %d", &id);
+                displayMember(members, id);
                 break;
-            case 5:
+            case 5: // Remove Member //
+                break;
+            case 6: // Exit program //
+                free(newMember);
+                free(members);
                 printf("OK, thanks. Latez!\n");
                 break;
             default:
                 printf("Wrong choice.  Try again.\n");
                 break;        
         } 
-    } while (choice !=5);   
+    } while (choice !=6);   
 }
+
+
+// Displays all members added into node `members`.
+void display(struct members *memb) {
+    while (memb != NULL)
+    {
+        printf("%d.) Initials - %s\tFavorite Musician - %s\tDream Car - %s\n", 
+            memb->member_index, 
+            memb->member_initials, 
+            memb->member_favMusician, 
+            memb->member_dreamCar
+        );
+        memb = memb->next;
+    }
+    printf("\n\n");
+}
+
+void displayMember(struct members *membID, int id) {
+    while (membID->member_index == id) {
+        printf("shit works yo");
+        printf("%d.) Initials - %s\tFavorite Musician - %s\tDream Car - %s\n", 
+            membID->member_index, 
+            membID->member_initials, 
+            membID->member_favMusician, 
+            membID->member_dreamCar
+        );
+        membID = membID->next;
+    }
+    printf("\n\n");
+}
+//
+//void remove(struct members *memb) {
+//    return 0;
+//}
