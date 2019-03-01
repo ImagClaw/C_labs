@@ -23,9 +23,9 @@
 *          /Required data for linked list completion
 *          /May be worth each student just posting their data into a slack channel so everyone can grab off of it
 *      Create a menu allowing for the following:
-*          Print out of all students and all of their data
+*          /Print out of all students and all of their data
 *          Print out of all students and only one of their data members on request of user (ex. print out all students and their fav car)
-*          Print out of only a specific student (This one can be challanging)
+*          /Print out of only a specific student (This one can be challanging)
 *      BONUS
 *          Add additonal students to the end
 *          Remove students at the end
@@ -63,12 +63,13 @@ struct members {
 
 void displayMember(struct members *membID, int id);
 void display(struct members *myMembers);
+void displaySpecificData(struct members *memb, int n);
+void getch();
 //void remove(struct members *memb);
 
 int main() {
-
     
-
+    // Initialize the variables
     int choice;
     int index = 0;
     int id;
@@ -93,25 +94,26 @@ int main() {
         printf("1. Add Member.\n");
         printf("2. Print all Member's data.\n");
         printf("3. Print specific Member's data.\n");
-        printf("4. Print a section of Member's data\n");
-        printf("5. Remove a member (by ID).\n");
+        printf("4. Print a section of Member data\n");
+        printf("5. TODO: Remove a member (by ID).\n");
         printf("6. Exit\n\n");
         printf("Enter your choice here: ");
         scanf("%d", &choice);
         switch (choice) {
             case 1:
-                // declares a newMember as a new addition to the list
+                // allocating newMember node in the heap
                 newMember = (struct members *)malloc(sizeof(struct members));
                 // increases index for each user added to the list
                 newMember->member_index = ++index;
                 // Add Member Menu header and prompts user to input 
                 printf("\n /\\  _| _|  |\\/| _  _ _ |_  _  _.\n");
                 printf("/~~\\(_|(_|  |  |(/_| | ||_)(/_| .\n");
+                printf("==================================\n");
                 printf("Answer a few questions, there are only 3.\n");
                 printf("1. Member's initials: ");
                 scanf(" %[^\t\n]s", initials);
-                //fgets(initials, 3, stdin);
-                if (strlen(initials)!=3) {
+                // if input is larger than 3, error out.
+                if (strlen(initials) > 3) {
                     printf("\n\n\nERROR: 3 initials only. Try again.\n\n\n");
                     break;
                 }
@@ -131,8 +133,9 @@ int main() {
                 strcpy(newMember->member_dreamCar, dreamCar);
                 newMember->next = NULL;
                 printf("\nThanks! Info has been added to the Database.\nReturning you to the Main Menu.\n\n");
+                printf("Press any key to continue...\n\n\n");
+                getch();
                 if (members == NULL) {
-                    //members = newMember;
                     members = newMember;
                     currentMember = newMember;
                 } else {
@@ -142,21 +145,54 @@ int main() {
                 //
                 break;
             case 2: // Print all members data //
+                printf(" /\\ ||  |\\/| _  _ _ |_  _  _ _  |~\\ _ _|_ _ .\n");
+                printf("/~~\\||  |  |(/_| | ||_)(/_| _\\  |_/(_| | (_|.\n");
+                printf("===============================================\n");
                 if (members == NULL) {
-                    printf("\nNothing to see here...\n\n");
+                    printf("\nThere are no members loaded.\n\n");
                 } else {
                     display(members);
                 }
+                printf("Press any key to continue...\n\n\n");
+                getch();
                 break;
             case 3: // Print specific members data //
-                printf("case 3\n\n");
-                break;
-            case 4: // Print all of a single members data //
-                printf("Enter the ID of the Member's data: \n");
+                printf("Enter the ID of the Member's data: ");
                 scanf(" %d", &id);
                 displayMember(members, id);
+                printf("Press any key to continue...\n\n\n");
+                getch();
+                break;
+            case 4: // Print all of a single members data //
+                printf("(~ _  _  _. |`. _  |\\/| _  _ _ |_  _  _  |~\\ _ _|_ _ .\n");
+                printf("_)|_)(/_(_|~|~|(_  |  |(/_| | ||_)(/_|   |_/(_| | (_|.\n");
+                printf("  |\n");                                             
+                printf("======================================================\n");
+                printf("\t1. Initials\n");
+                printf("\t2. Favorite Musician\n");
+                printf("\t3. Dream Car\n\n");
+                printf("\tEnter the number associated with the data you want: ");
+                scanf("%d", &choice);
+                switch (choice) {
+                    case 1: // Member Intials // 
+                        displaySpecificData(members, 1);
+                        printf("Press any key to continue...\n\n\n");
+                        getch();
+                        break;
+                    case 2: // Mmeber Favorite Musician //
+                        displaySpecificData(members, 2);
+                        printf("Press any key to continue...\n\n\n");
+                        getch();
+                        break;
+                    case 3: // Mmeber Dream Car //
+                        displaySpecificData(members, 3);
+                        printf("Press any key to continue...\n\n\n");
+                        getch();
+                        break;
+                }
                 break;
             case 5: // Remove Member //
+                printf("Still in the works.  Pls come back later... O_O\n\n");
                 break;
             case 6: // Exit program //
                 free(newMember);
@@ -175,7 +211,7 @@ int main() {
 void display(struct members *memb) {
     while (memb != NULL)
     {
-        printf("%d.) Initials - %s\tFavorite Musician - %s\tDream Car - %s\n", 
+        printf("%d.) Initials - %s\tFavorite Musician - %s\t\tDream Car - %s\n", 
             memb->member_index, 
             memb->member_initials, 
             memb->member_favMusician, 
@@ -187,15 +223,50 @@ void display(struct members *memb) {
 }
 
 void displayMember(struct members *membID, int id) {
-    while (membID->member_index == id) {
-        printf("shit works yo");
-        printf("%d.) Initials - %s\tFavorite Musician - %s\tDream Car - %s\n", 
+    while (membID != NULL && membID->member_index != id) {
+        membID = membID->next;
+    }
+    if (membID != NULL) {
+        printf("%d.) Initials - %s\tFavorite Musician - %s\t\tDream Car - %s\n", 
             membID->member_index, 
             membID->member_initials, 
             membID->member_favMusician, 
             membID->member_dreamCar
         );
-        membID = membID->next;
+        } else {
+            printf("ID not found.");
+    }
+    printf("\n\n");
+}
+
+void displaySpecificData(struct members *memb, int n) {
+    while (n != 0 && memb != NULL) {
+        switch (n) {  
+            case 1:
+                printf("\t%d.) Initials - %s\n", 
+                    memb->member_index, 
+                    memb->member_initials
+                );
+                memb = memb->next;
+                break;
+            case 2:
+                printf("\t%d.) Favorite Musician - %s\n", 
+                    memb->member_index, 
+                    memb->member_favMusician
+                );
+                memb = memb->next;
+                break;
+            case 3:
+                printf("\t%d.) Dream Car - %s\n", 
+                    memb->member_index, 
+                    memb->member_dreamCar
+                );
+                memb = memb->next;
+                break;
+            default: 
+                printf("\tData not found.\n");
+                break;
+        }
     }
     printf("\n\n");
 }
