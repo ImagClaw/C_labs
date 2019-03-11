@@ -15,13 +15,19 @@
           if (string[c] >= 'a' && string[c] <= 'z') {
              x = string[c] - 'a';
              count[x]++;
+          } else if (string[c] >= 'A' && string[c] <= 'Z') {
+             x = string[c] - 'A';
+             count[x]++;
           }
-     
           c++;
        }
      
        for (c = 0; c < 26; c++)
-             printf("%c occurs %d times in the string.\n", c + 'a', count[c]);
+            if (string[c] >= 'a' && string[c] <= 'z') {
+                printf("%c occurs %d times in the string.\n", c + 'a', count[c]);
+            } else if (string[c] >= 'A' && string[c] <= 'Z') {
+                printf("%c occurs %d times in the string.\n", c + 'A', count[c]);
+            }
      
        return 0;
     }
