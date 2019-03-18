@@ -10,7 +10,7 @@
 int main()
 {
 	printf("Welcome to C Programming");
-	printf("New update to branch!")
+	printf("New update to branch name!");
 	
 	return(0);
 }
