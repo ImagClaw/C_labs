@@ -9,11 +9,13 @@ const char * startswithB(char *sentence) {
 
 
 int main() {
+
+    // Init variable
     char sentence[64];
 
-    printf("Enter a string: ");
-    gets(sentence);
+    printf("Enter a string: "); // prompt user to enter a string
+    fscanf(stdin, "%[^\n]s", sentence); //
 
+    // Send the variable 'sentence' to sift for 
     startswithB(sentence);
-
 }
