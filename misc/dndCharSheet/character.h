@@ -5,32 +5,23 @@
 
 typedef struct Character {
     char cName[MAX_STR_LNGTH];
-   
+    // Character Level and Armor Level
     int cLevel;
     int armorClass;
-
+    // Character Attributes
     int str;
     int dex;
     int con;
     int intel;
     int wis;
     int cha;
-
+    // Character initiative and speed
     int speed;
     int init;
-
+    // Hitpoints
     int maxHP;
     int currHP; 
 } charSheet;
-
-typedef struct Classes {
-    char className[MAX_STR_LNGTH];
-} charClass;
-
-typedef struct Alignment {
-    int id;
-    char alignName[MAX_STR_LNGTH];
-} charAlign;
 
 typedef struct Race {
     char raceName[MAX_STR_LNGTH];
@@ -43,30 +34,30 @@ typedef struct Race {
 } charRace;
 
 // Character Classes
-extern const charClass BARBARIAN = {"Barbarain"};
-extern const charClass BARD = {"Bard"};
-extern const charClass CLERIC = {"Cleric"};
-extern const charClass DRUID = {"Druid"};
-extern const charClass FIGHTER = {"Fighter"};
-extern const charClass MONK = {"Monk"};
-extern const charClass PALADIN = {"Paladin"};
-extern const charClass RANGER = {"Ranger"};
-extern const charClass ROGUE = {"Rogue"};
-extern const charClass SORCERER = {"Sorcerer"};
-extern const charClass WARLOCK = {"Warlock"};
-extern const charClass WIZARD = {"Wizard"};
+char * const BARBARIAN = {"Barbarain"};
+char * const BARD = {"Bard"};
+char * const CLERIC = {"Cleric"};
+char * const DRUID = {"Druid"};
+char * const FIGHTER = {"Fighter"};
+char * const MONK = {"Monk"};
+char * const PALADIN = {"Paladin"};
+char * const RANGER = {"Ranger"};
+char * const ROGUE = {"Rogue"};
+char * const SORCERER = {"Sorcerer"};
+char * const WARLOCK = {"Warlock"};
+char * const WIZARD = {"Wizard"};
 
 
 // Character Alignment
-extern const charAlign LAWFULGOOD = {0, "Lawful Good"};
-extern const charAlign LAWFULNEUTRAL = {1, "Lawful Neutral"};
-extern const charAlign LAWFULEVIL = {2, "Lawful Evil"};
-extern const charAlign NUETRALGOOD = {3, "Nuetral Good"};
-extern const charAlign NUETRAL = {4, "Nuetral"};
-extern const charAlign NUETRALEVIL = {5, "Nuetral Evil"};
-extern const charAlign CHAOTICGOOD = {6, "Chaotic Good"};
-extern const charAlign CHAOTICNUETRAL = {7, "Chaotic Nuetral"};
-extern const charAlign CHAOTICEVIL = {8, "Chaotic EVIL"};
+char * const LAWFULGOOD = {"Lawful Good"};
+char * const LAWFULNEUTRAL = {"Lawful Neutral"};
+char * const LAWFULEVIL = {"Lawful Evil"};
+char * const NEUTRALGOOD = {"Nuetral Good"};
+char * const NEUTRAL = {"Nuetral"};
+char * const NEUTRALEVIL = {"Nuetral Evil"};
+char * const CHAOTICGOOD = {"Chaotic Good"};
+char * const CHAOTICNEUTRAL = {"Chaotic Nuetral"};
+char * const CHAOTICEVIL = {"Chaotic Evil"};
 
 
 // Character Races
