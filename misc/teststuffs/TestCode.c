@@ -140,8 +140,7 @@ int insertWord(char *sentence, int sentenceLength, char *word, int wordLength, i
 		temp[i + loc + wordLength] = sentence[i + loc + 1];
 	}
 		
-	sentence = temp;
-	printf("\n\n\n%s\n\n\n\n", sentence);
+	strcpy(sentence, temp);
 
 	return success;
 }
