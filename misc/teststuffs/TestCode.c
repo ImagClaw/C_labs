@@ -121,9 +121,9 @@ int combineStrings(char *sentence1, int sentence1Length, char *sentence2, int se
 int insertWord(char *sentence, int sentenceLength, char *word, int wordLength, int loc)
 {
 	int success = ERROR_SUCCESS;
-	//int i, c = 0, k = 0;
 	char temp[128];
 
+	// Error Handling
 	if ((!sentence) || (!sentenceLength) || (!word) || (!wordLength) || (!loc)) {
 		return ERROR_INVALID_PARAMETER;
 	}
